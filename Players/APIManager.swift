@@ -2,7 +2,7 @@
 //  WebserviceManager.swift
 //  Players
 //
-//  Created by Gurvinder Singh  on 13/01/19.
+//  Created by Gurvinder Singh  on 06/02/19.
 //  Copyright © 2019 Players. All rights reserved.
 //
 
@@ -20,13 +20,14 @@ class APIManager: NSObject {
     }
 
     
-    func getData(urlString: String, params: String ,completion: @escaping (_ isSuccess: Bool, _ reason: String ,_ data: Data?) -> Void) {
+    func getData(urlString: String, params: String, requestType: RequestType ,completion: @escaping (_ isSuccess: Bool, _ reason: String ,_ data: Data?) -> Void) {
         
         if let url = URL(string: urlString) {
             let apiRequest = NSMutableURLRequest(url: url)
-            apiRequest.httpMethod = "POST"
+            apiRequest.httpMethod = requestType.value()
             apiRequest.setValue("gzip", forHTTPHeaderField: "Accept-Encoding")
             apiRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            apiRequest.setValue(APIManager.apiInstance.token, forHTTPHeaderField: "token")
             apiRequest.httpBody = params.data(using: .utf8)
             
             let getDataTask = URLSession.shared.dataTask(with: apiRequest as URLRequest)
@@ -54,4 +55,14 @@ class APIManager: NSObject {
     }
 
     
+}
+
+
+enum RequestType: String {
+    case GET
+    case POST
+    
+    func value() -> String {
+        return self.rawValue
+    }
 }

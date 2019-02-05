@@ -2,7 +2,7 @@
 //  Constants.swift
 //  Players
 //
-//  Created by Gurvinder Singh  on 13/01/19.
+//  Created by Gurvinder Singh  on 06/02/19.
 //  Copyright © 2019 Players. All rights reserved.
 //
 
@@ -20,17 +20,9 @@ class Constants {
         return "\(basePath)api/user/login"
     }
 
-    
-    enum Segues: String {
-        
-        case ProductListToDetail
-        case HomeToProductList
-        case HomeToCategorySearch
-        case SearchToProductList
-        
-        func value() -> String {
-            return self.rawValue
-        }
+    func filters() -> String {
+        return "\(basePath)api/players/filters?token=\(APIManager.apiInstance.token)"
     }
+    
     
 }
