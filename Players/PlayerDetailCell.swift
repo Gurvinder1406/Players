@@ -25,11 +25,44 @@ class PlayerDetailCell: UITableViewCell {
     @IBOutlet weak var lbl_id: UILabel!
     @IBOutlet weak var lbl_points: UILabel!
     @IBOutlet weak var lbl_building: UILabel!
+    @IBOutlet weak var v_mainBackground: UIView!
     
+    
+    override func awakeFromNib() {
+        v_mainBackground.layer.cornerRadius = 10
+    }
     
     func populateCell(playerDetails: Player) {
         
+        lbl_categoryName.text = playerDetails.category ?? ""
+        lbl_price.text = "Price:  ₹\(playerDetails.basePrice ?? "")"
+        lbl_nameAge.text = "\(playerDetails.name ?? "") (\(playerDetails.age ?? 0) yrs)"
+        lbl_teamName.text = playerDetails.team ?? ""
+        lbl_skills.text = self.setSkills(playerDetails: playerDetails)
+        lbl_id.text = "\(playerDetails.id ?? 0)"
+        lbl_points.text = "\(playerDetails.points ?? 0)"
+        lbl_building.text = playerDetails.building ?? ""
+        lbl_teamColor.backgroundColor = CommonFunctions.sharedInstance.dictDynamicColorList[playerDetails.team ?? ""]
     }
     
+    
+    func setSkills(playerDetails: Player) -> String {
+        
+        var skillBuilder: String = ""
+        if (playerDetails.batsman ?? "").replacingOccurrences(of: "-", with: "") != "" {
+            skillBuilder = skillBuilder + "\(playerDetails.batsman ?? "") batsman"
+        }
+        if (playerDetails.bowler ?? "").replacingOccurrences(of: "-", with: "") != "" {
+            if skillBuilder != "" {
+                skillBuilder = skillBuilder + ", "
+            }
+            skillBuilder = skillBuilder + "\(playerDetails.bowler ?? "") bowler"
+        }
+        if skillBuilder == "" {
+            skillBuilder = "-"
+        }
+        
+        return skillBuilder
+    }
     
 }
