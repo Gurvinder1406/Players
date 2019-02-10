@@ -23,6 +23,11 @@ class PlayerDetailController: UIViewController {
         self.getPlayerList()
     }
     
+    @IBAction func filterClicked(sender: UIBarButtonItem) {
+        print("Clicked")
+        self.performSegue(withIdentifier: "filters", sender: self)
+    }
+    
 }
 
 
@@ -82,9 +87,12 @@ extension PlayerDetailController {
     func setUIElements() {
         self.tv_playerDetails.tableFooterView = UIView()
         self.tv_playerDetails.separatorStyle = .none
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 122.0/255, green: 142.0/255, blue: 49.0/255, alpha: 1.0)
         self.title = "PLAYERS"
-    }
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+}
     
     func setColorsForTeams(playerList: Array<Player>) {
         playerList.forEach { (player) in

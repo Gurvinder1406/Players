@@ -18,9 +18,18 @@
 		AB071E17220A02FB0071F798 /* LoginDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB071E16220A02FB0071F798 /* LoginDetails.swift */; };
 		AB071E19220A10F00071F798 /* PlayerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB071E18220A10F00071F798 /* PlayerDetailController.swift */; };
 		AB5ACE7A2210459300C96F56 /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5ACE792210459300C96F56 /* CommonFunctions.swift */; };
+		AB5ACE7C2210935300C96F56 /* FilterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5ACE7B2210935300C96F56 /* FilterManager.swift */; };
 		ABCA9564220F077E00A61881 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA9563220F077E00A61881 /* Filters.swift */; };
 		ABCA9566220F120D00A61881 /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA9565220F120D00A61881 /* Players.swift */; };
 		ABCA95682210247F00A61881 /* PlayerDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA95672210247F00A61881 /* PlayerDetailCell.swift */; };
+		ABD059ED2210A01300ECD20E /* CheckBoxDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD059E52210A01200ECD20E /* CheckBoxDelegate.swift */; };
+		ABD059EE2210A01300ECD20E /* RadioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD059E62210A01200ECD20E /* RadioCell.xib */; };
+		ABD059EF2210A01300ECD20E /* Group.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABD059E72210A01200ECD20E /* Group.xcassets */; };
+		ABD059F02210A01300ECD20E /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD059E82210A01300ECD20E /* CheckBox.swift */; };
+		ABD059F12210A01300ECD20E /* RadioGroup.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD059E92210A01300ECD20E /* RadioGroup.xib */; };
+		ABD059F22210A01300ECD20E /* RadioGroupDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD059EA2210A01300ECD20E /* RadioGroupDelegate.swift */; };
+		ABD059F32210A01300ECD20E /* CheckBox.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABD059EB2210A01300ECD20E /* CheckBox.xib */; };
+		ABD059F42210A01300ECD20E /* RadioGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD059EC2210A01300ECD20E /* RadioGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,9 +48,18 @@
 		AB071E16220A02FB0071F798 /* LoginDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetails.swift; sourceTree = "<group>"; };
 		AB071E18220A10F00071F798 /* PlayerDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailController.swift; sourceTree = "<group>"; };
 		AB5ACE792210459300C96F56 /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
+		AB5ACE7B2210935300C96F56 /* FilterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterManager.swift; sourceTree = "<group>"; };
 		ABCA9563220F077E00A61881 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		ABCA9565220F120D00A61881 /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
 		ABCA95672210247F00A61881 /* PlayerDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailCell.swift; sourceTree = "<group>"; };
+		ABD059E52210A01200ECD20E /* CheckBoxDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxDelegate.swift; sourceTree = "<group>"; };
+		ABD059E62210A01200ECD20E /* RadioCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioCell.xib; sourceTree = "<group>"; };
+		ABD059E72210A01200ECD20E /* Group.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Group.xcassets; sourceTree = "<group>"; };
+		ABD059E82210A01300ECD20E /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		ABD059E92210A01300ECD20E /* RadioGroup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioGroup.xib; sourceTree = "<group>"; };
+		ABD059EA2210A01300ECD20E /* RadioGroupDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioGroupDelegate.swift; sourceTree = "<group>"; };
+		ABD059EB2210A01300ECD20E /* CheckBox.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckBox.xib; sourceTree = "<group>"; };
+		ABD059EC2210A01300ECD20E /* RadioGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioGroup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +95,7 @@
 		AB071DFC220A00370071F798 /* Players */ = {
 			isa = PBXGroup;
 			children = (
+				ABD059E422109FFC00ECD20E /* CheckBox-Radio */,
 				AB071E15220A02DB0071F798 /* Modals */,
 				AB071E12220A02820071F798 /* Constants.swift */,
 				AB071E11220A02820071F798 /* APIManager.swift */,
@@ -84,6 +103,7 @@
 				AB071DFF220A00370071F798 /* LoginController.swift */,
 				AB071E18220A10F00071F798 /* PlayerDetailController.swift */,
 				ABCA95672210247F00A61881 /* PlayerDetailCell.swift */,
+				AB5ACE7B2210935300C96F56 /* FilterManager.swift */,
 				AB071E01220A00370071F798 /* Main.storyboard */,
 				AB071E04220A00390071F798 /* Assets.xcassets */,
 				AB071E06220A00390071F798 /* LaunchScreen.storyboard */,
@@ -101,6 +121,21 @@
 				ABCA9565220F120D00A61881 /* Players.swift */,
 			);
 			path = Modals;
+			sourceTree = "<group>";
+		};
+		ABD059E422109FFC00ECD20E /* CheckBox-Radio */ = {
+			isa = PBXGroup;
+			children = (
+				ABD059E82210A01300ECD20E /* CheckBox.swift */,
+				ABD059EB2210A01300ECD20E /* CheckBox.xib */,
+				ABD059E52210A01200ECD20E /* CheckBoxDelegate.swift */,
+				ABD059E72210A01200ECD20E /* Group.xcassets */,
+				ABD059E62210A01200ECD20E /* RadioCell.xib */,
+				ABD059EC2210A01300ECD20E /* RadioGroup.swift */,
+				ABD059E92210A01300ECD20E /* RadioGroup.xib */,
+				ABD059EA2210A01300ECD20E /* RadioGroupDelegate.swift */,
+			);
+			path = "CheckBox-Radio";
 			sourceTree = "<group>";
 		};
 		BBE8D9BB61546987095CED98 /* Frameworks */ = {
@@ -181,8 +216,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB071E08220A00390071F798 /* LaunchScreen.storyboard in Resources */,
+				ABD059EE2210A01300ECD20E /* RadioCell.xib in Resources */,
 				AB071E05220A00390071F798 /* Assets.xcassets in Resources */,
+				ABD059EF2210A01300ECD20E /* Group.xcassets in Resources */,
 				AB071E03220A00370071F798 /* Main.storyboard in Resources */,
+				ABD059F32210A01300ECD20E /* CheckBox.xib in Resources */,
+				ABD059F12210A01300ECD20E /* RadioGroup.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,12 +282,17 @@
 				ABCA9566220F120D00A61881 /* Players.swift in Sources */,
 				ABCA9564220F077E00A61881 /* Filters.swift in Sources */,
 				AB5ACE7A2210459300C96F56 /* CommonFunctions.swift in Sources */,
+				ABD059ED2210A01300ECD20E /* CheckBoxDelegate.swift in Sources */,
 				AB071E00220A00370071F798 /* LoginController.swift in Sources */,
+				AB5ACE7C2210935300C96F56 /* FilterManager.swift in Sources */,
 				AB071E17220A02FB0071F798 /* LoginDetails.swift in Sources */,
+				ABD059F42210A01300ECD20E /* RadioGroup.swift in Sources */,
 				AB071DFE220A00370071F798 /* AppDelegate.swift in Sources */,
 				AB071E13220A02820071F798 /* APIManager.swift in Sources */,
 				AB071E14220A02820071F798 /* Constants.swift in Sources */,
+				ABD059F22210A01300ECD20E /* RadioGroupDelegate.swift in Sources */,
 				ABCA95682210247F00A61881 /* PlayerDetailCell.swift in Sources */,
+				ABD059F02210A01300ECD20E /* CheckBox.swift in Sources */,
 				AB071E19220A10F00071F798 /* PlayerDetailController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
