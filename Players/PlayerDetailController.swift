@@ -18,8 +18,7 @@ class PlayerDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tv_playerDetails.tableFooterView = UIView()
-        self.tv_playerDetails.separatorStyle = .none
+        self.setUIElements()
         self.getFilters()
         self.getPlayerList()
     }
@@ -77,8 +76,15 @@ extension PlayerDetailController {
     }
 }
 
-
+// MARK: Setting UI & colors for different teams
 extension PlayerDetailController {
+    
+    func setUIElements() {
+        self.tv_playerDetails.tableFooterView = UIView()
+        self.tv_playerDetails.separatorStyle = .none
+        self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 122.0/255, green: 142.0/255, blue: 49.0/255, alpha: 1.0)
+        self.title = "PLAYERS"
+    }
     
     func setColorsForTeams(playerList: Array<Player>) {
         playerList.forEach { (player) in

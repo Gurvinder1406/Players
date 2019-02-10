@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Players/PlayerDetailCell.swift"
-            timestampString = "571494970.0199029"
+            timestampString = "571508874.471548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "populateCell(playerDetails:)"
             landmarkType = "7">
          </BreakpointContent>

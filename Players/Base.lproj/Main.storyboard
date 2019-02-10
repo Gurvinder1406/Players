@@ -171,7 +171,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7gf-qB-aZL">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="77" width="375" height="590"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playerCell" rowHeight="210" id="AKX-NK-uHH" customClass="PlayerDetailCell" customModule="Players">
@@ -426,6 +426,7 @@
                                             <outlet property="lbl_building" destination="R77-es-2mo" id="HAb-qn-scO"/>
                                             <outlet property="lbl_categoryName" destination="B4P-YC-gQy" id="Hfm-zf-LjM"/>
                                             <outlet property="lbl_id" destination="Qjt-Hb-x7T" id="m6L-Ff-TLm"/>
+                                            <outlet property="lbl_lowerTeamColor" destination="9UP-TJ-rjL" id="8M8-3X-pS4"/>
                                             <outlet property="lbl_nameAge" destination="RYO-2s-p2c" id="Ivc-DF-4M1"/>
                                             <outlet property="lbl_points" destination="XcP-JQ-xOX" id="AHv-Gn-4Xl"/>
                                             <outlet property="lbl_price" destination="jey-ig-ogY" id="seR-hH-LGP"/>
@@ -445,11 +446,11 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7gf-qB-aZL" secondAttribute="trailing" id="5Ee-Sb-l9i"/>
                             <constraint firstItem="7gf-qB-aZL" firstAttribute="bottom" secondItem="rx4-4e-IzD" secondAttribute="bottom" id="bdY-Fy-1lg"/>
-                            <constraint firstItem="7gf-qB-aZL" firstAttribute="top" secondItem="rx4-4e-IzD" secondAttribute="top" id="kkb-8y-MC9"/>
+                            <constraint firstItem="7gf-qB-aZL" firstAttribute="top" secondItem="rx4-4e-IzD" secondAttribute="top" constant="13" id="kkb-8y-MC9"/>
                             <constraint firstItem="7gf-qB-aZL" firstAttribute="leading" secondItem="s0q-qY-9Fd" secondAttribute="leading" id="zN9-Mu-xbh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rx4-4e-IzD"/>

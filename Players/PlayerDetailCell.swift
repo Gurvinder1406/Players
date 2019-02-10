@@ -26,6 +26,7 @@ class PlayerDetailCell: UITableViewCell {
     @IBOutlet weak var lbl_points: UILabel!
     @IBOutlet weak var lbl_building: UILabel!
     @IBOutlet weak var v_mainBackground: UIView!
+    @IBOutlet weak var lbl_lowerTeamColor: UILabel!
     
     
     override func awakeFromNib() {
@@ -42,7 +43,7 @@ class PlayerDetailCell: UITableViewCell {
         lbl_id.text = "\(playerDetails.id ?? 0)"
         lbl_points.text = "\(playerDetails.points ?? 0)"
         lbl_building.text = playerDetails.building ?? ""
-        lbl_teamColor.backgroundColor = CommonFunctions.sharedInstance.dictDynamicColorList[playerDetails.team ?? ""]
+        self.setTeamColor(color: CommonFunctions.sharedInstance.dictDynamicColorList[playerDetails.team ?? ""] ?? UIColor())
     }
     
     
@@ -63,6 +64,12 @@ class PlayerDetailCell: UITableViewCell {
         }
         
         return skillBuilder
+    }
+    
+    func setTeamColor(color: UIColor) {
+        lbl_teamColor.backgroundColor = color
+        v_separator.backgroundColor = color
+        lbl_lowerTeamColor.backgroundColor = color
     }
     
 }

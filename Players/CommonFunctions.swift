@@ -21,9 +21,9 @@ class CommonFunctions {
     
     func generateRandomColor() -> UIColor {
         
-        let red = CGFloat(self.randomNumberGenerator(lowerThreshHold: 0, upperThreshHold: 255))
-        let green = CGFloat(self.randomNumberGenerator(lowerThreshHold: 0, upperThreshHold: 255))
-        let blue = CGFloat(self.randomNumberGenerator(lowerThreshHold: 0, upperThreshHold: 255))
+        let red = CGFloat(self.randomNumberGenerator(lowerThreshHold: 0, upperThreshHold: 255))/255.0
+        let green = CGFloat(self.randomNumberGenerator(lowerThreshHold: 0, upperThreshHold: 255))/255.0
+        let blue = CGFloat(self.randomNumberGenerator(lowerThreshHold: 0, upperThreshHold: 255))/255.0
 
         return UIColor.init(red: red, green: green, blue: blue, alpha: 1.0)
     }
