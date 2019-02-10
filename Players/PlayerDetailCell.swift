@@ -31,6 +31,7 @@ class PlayerDetailCell: UITableViewCell {
     
     override func awakeFromNib() {
         v_mainBackground.layer.cornerRadius = 10
+        iv_userImage.layer.cornerRadius = iv_userImage.frame.height/2
     }
     
     func populateCell(playerDetails: Player) {
@@ -43,6 +44,7 @@ class PlayerDetailCell: UITableViewCell {
         lbl_id.text = "\(playerDetails.id ?? 0)"
         lbl_points.text = "\(playerDetails.points ?? 0)"
         lbl_building.text = playerDetails.building ?? ""
+        iv_userImage.image = UIImage(named: "player")
         self.setTeamColor(color: CommonFunctions.sharedInstance.dictDynamicColorList[playerDetails.team ?? ""] ?? UIColor())
     }
     

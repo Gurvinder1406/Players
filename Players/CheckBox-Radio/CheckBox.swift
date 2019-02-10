@@ -10,11 +10,10 @@ import UIKit
 
 
 // RadioGroup
-@IBDesignable open class CheckBox: UIView{
+@IBDesignable open class CheckBox: UIView {
     
     
     @IBOutlet weak var checkBoxButton: UIButton!
-    
     @IBOutlet weak var checkBoxLabel: UILabel!
     
     
@@ -36,7 +35,7 @@ import UIKit
     
     public var delegate : CheckBoxDelegate!
  
-    
+    public var checkBoxType: CheckBoxType!
     
     
 
@@ -57,7 +56,7 @@ import UIKit
         }
     }
     
-    @IBInspectable public var fontSize: CGFloat = 20.0{
+    @IBInspectable public var fontSize: CGFloat = 12.0{
         didSet {
             
             checkBoxLabel.font = UIFont.systemFont(ofSize: fontSize)
@@ -85,15 +84,14 @@ import UIKit
         }
     }
     
-    
-    
-    
+  
     
     
     //MARK: Initializers
     override public init(frame : CGRect) {
         super.init(frame : frame)
         initSubviews()
+        initActionAndDelegete()
     }
     
     
@@ -154,7 +152,7 @@ import UIKit
         
         if delegate != nil {
             
-            delegate.CheckBox(self)
+            delegate.checkBoxClicked(self)
         }
     }else  if self.checked == true {
         
@@ -162,7 +160,7 @@ import UIKit
         self.checked = false
         if delegate != nil {
             
-            delegate.CheckBox(self)
+            delegate.checkBoxClicked(self)
         }
     }
     
@@ -172,4 +170,16 @@ import UIKit
     
     
 
+}
+
+public enum CheckBoxType: String {
+    case Building = "BUILDINGS"
+    case Skill = "SKILLS"
+    case Category = "CATEGORIES"
+    case Point = "POINTS"
+    case TeamStatus = "TEAM STATUS"
+    
+    func value() -> String {
+        return self.rawValue
+    }
 }

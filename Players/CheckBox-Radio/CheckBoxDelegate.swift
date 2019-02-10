@@ -11,6 +11,6 @@ import Foundation
 public protocol CheckBoxDelegate {
     
     
-    func CheckBox(_ checkBox: CheckBox)
+    func checkBoxClicked(_ checkBox: CheckBox)
 
 }

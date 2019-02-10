@@ -516,16 +516,49 @@
                                     <constraint firstItem="dnS-xO-4Be" firstAttribute="baseline" secondItem="xjm-Km-Che" secondAttribute="baseline" constant="-3" id="tca-sA-nK4"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFV-5Q-uHh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8b-ZL-77J">
+                                <rect key="frame" x="109" y="597" width="157" height="50"/>
+                                <color key="backgroundColor" red="0.47843137250000001" green="0.5568627451" blue="0.19215686269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="157" id="Dwl-bJ-y6q"/>
+                                    <constraint firstAttribute="height" constant="50" id="JPE-fb-hYB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="APPLY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="applyFilters:" destination="tCT-iR-CCP" eventType="touchUpInside" id="Oso-FS-NUC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="CFV-5Q-uHh" firstAttribute="bottom" secondItem="QXF-KV-bh5" secondAttribute="bottom" id="CiB-vO-YmW"/>
+                            <constraint firstItem="CFV-5Q-uHh" firstAttribute="leading" secondItem="XRm-X1-FDa" secondAttribute="leading" id="Cwy-w9-cwH"/>
                             <constraint firstItem="XRm-X1-FDa" firstAttribute="top" secondItem="QXF-KV-bh5" secondAttribute="top" constant="-20" id="M2a-36-E7R"/>
+                            <constraint firstItem="G8b-ZL-77J" firstAttribute="centerX" secondItem="QXF-KV-bh5" secondAttribute="centerX" id="YvS-ah-5ca"/>
                             <constraint firstAttribute="trailing" secondItem="XRm-X1-FDa" secondAttribute="trailing" id="ZeE-dH-owN"/>
+                            <constraint firstItem="CFV-5Q-uHh" firstAttribute="top" secondItem="XRm-X1-FDa" secondAttribute="bottom" id="avK-hd-UUo"/>
                             <constraint firstItem="QXF-KV-bh5" firstAttribute="bottom" secondItem="XRm-X1-FDa" secondAttribute="bottom" constant="603" id="k2Z-Qb-RC9"/>
                             <constraint firstItem="XRm-X1-FDa" firstAttribute="leading" secondItem="fZO-5Q-02s" secondAttribute="leading" id="tCZ-NC-lGn"/>
+                            <constraint firstItem="CFV-5Q-uHh" firstAttribute="trailing" secondItem="XRm-X1-FDa" secondAttribute="trailing" id="uA1-6J-1zh"/>
+                            <constraint firstItem="QXF-KV-bh5" firstAttribute="bottom" secondItem="G8b-ZL-77J" secondAttribute="bottom" constant="20" id="vNE-jT-uKQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QXF-KV-bh5"/>
                     </view>
+                    <connections>
+                        <outlet property="btn_Apply" destination="G8b-ZL-77J" id="IjW-Jx-jHo"/>
+                        <outlet property="sv_BackgroundScroll" destination="CFV-5Q-uHh" id="SW9-oi-5wz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Kk-nk-uGN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

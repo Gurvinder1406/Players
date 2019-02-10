@@ -20,12 +20,20 @@ class PlayerDetailController: UIViewController {
         super.viewDidLoad()
         self.setUIElements()
         self.getFilters()
-        self.getPlayerList()
+        self.getPlayerList(skills: "", categories: "", buildings: "", teamStatus: -1)
     }
     
     @IBAction func filterClicked(sender: UIBarButtonItem) {
         print("Clicked")
         self.performSegue(withIdentifier: "filters", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "filters" {
+            let vc = segue.destination as! FilterManager
+            vc.filters = filter
+            vc.delegate = self
+        }
     }
     
 }
@@ -63,11 +71,14 @@ extension PlayerDetailController {
         }
     }
     
-    func getPlayerList() {
+    func getPlayerList(skills: String, categories: String, buildings: String, teamStatus: Int) {
         PKHUD.sharedHUD.show()
-        APIManager.apiInstance.getData(urlString: Constants.sharedInstance.playersList(), params: "", requestType: .POST) {
+        let params = "category=\(categories)&&skill=\(skills)&&building=\(buildings)&&team_status=\(teamStatus)"
+        APIManager.apiInstance.getData(urlString: Constants.sharedInstance.playersList(), params: params, requestType: .POST) {
             (success, reason, data) in
             do {
+                let asd = try JSONSerialization.jsonObject(with: data ?? Data(), options: .allowFragments)
+                print(asd)
                 let playersData = try JSONDecoder().decode(PlayersData.self, from: data ?? Data())
                 self.arr_Players = playersData.data?.players
                 self.setColorsForTeams(playerList: self.arr_Players)
@@ -105,3 +116,22 @@ extension PlayerDetailController {
     
 }
 
+extension PlayerDetailController: ApplyFilters {
+    func filterPlayersWith(skills: [Int], categories: [Int], buildings: [Int], teamStatus: Int) {
+        self.resetTable()
+        self.getPlayerList(skills: self.getCommaSeparatedValuesFromArray(inputArray: skills), categories: self.getCommaSeparatedValuesFromArray(inputArray: categories), buildings: self.getCommaSeparatedValuesFromArray(inputArray: buildings), teamStatus: teamStatus)
+    }
+    
+    func resetTable() {
+        self.arr_Players = []
+        self.tv_playerDetails.reloadData()
+    }
+    
+    func getCommaSeparatedValuesFromArray(inputArray: [Int]) -> String {
+        var commaSeparatedString = ""
+        inputArray.forEach { (value) in
+            commaSeparatedString = (commaSeparatedString == "") ? commaSeparatedString + "\(value)" : commaSeparatedString + ",\(value)"
+        }
+        return commaSeparatedString
+    }
+}

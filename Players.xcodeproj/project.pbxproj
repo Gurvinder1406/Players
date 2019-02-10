@@ -97,18 +97,18 @@
 			children = (
 				ABD059E422109FFC00ECD20E /* CheckBox-Radio */,
 				AB071E15220A02DB0071F798 /* Modals */,
+				AB071DFD220A00370071F798 /* AppDelegate.swift */,
 				AB071E12220A02820071F798 /* Constants.swift */,
 				AB071E11220A02820071F798 /* APIManager.swift */,
-				AB071DFD220A00370071F798 /* AppDelegate.swift */,
 				AB071DFF220A00370071F798 /* LoginController.swift */,
 				AB071E18220A10F00071F798 /* PlayerDetailController.swift */,
 				ABCA95672210247F00A61881 /* PlayerDetailCell.swift */,
 				AB5ACE7B2210935300C96F56 /* FilterManager.swift */,
+				AB5ACE792210459300C96F56 /* CommonFunctions.swift */,
 				AB071E01220A00370071F798 /* Main.storyboard */,
 				AB071E04220A00390071F798 /* Assets.xcassets */,
 				AB071E06220A00390071F798 /* LaunchScreen.storyboard */,
 				AB071E09220A00390071F798 /* Info.plist */,
-				AB5ACE792210459300C96F56 /* CommonFunctions.swift */,
 			);
 			path = Players;
 			sourceTree = "<group>";
