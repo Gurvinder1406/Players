@@ -12,7 +12,7 @@ import UIKit
 class APIManager: NSObject {
 
     static let apiInstance = APIManager()
-    var token = ""
+    var loginDetails: LoginDetails!
     
     
     override init() {
@@ -27,7 +27,7 @@ class APIManager: NSObject {
             apiRequest.httpMethod = requestType.value()
             apiRequest.setValue("gzip", forHTTPHeaderField: "Accept-Encoding")
             apiRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            apiRequest.setValue(APIManager.apiInstance.token, forHTTPHeaderField: "token")
+            apiRequest.setValue(loginDetails?.data?.token ?? "", forHTTPHeaderField: "token")
             apiRequest.httpBody = params.data(using: .utf8)
             
             let getDataTask = URLSession.shared.dataTask(with: apiRequest as URLRequest)

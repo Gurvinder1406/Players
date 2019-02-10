@@ -12,17 +12,20 @@ import UIKit
 class Constants {
 
     static let sharedInstance = Constants()
-    let basePath = "http://13.233.218.85/"
+    let basePath = "http://13.233.218.85/api/"
     
     private init() { }
     
     func loginUser() -> String {
-        return "\(basePath)api/user/login"
+        return "\(basePath)user/login"
     }
 
     func filters() -> String {
-        return "\(basePath)api/players/filters?token=\(APIManager.apiInstance.token)"
+        return "\(basePath)players/filters"
     }
     
+    func playersList() -> String {
+        return "\(basePath)players"
+    }
     
 }
