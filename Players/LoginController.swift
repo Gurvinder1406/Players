@@ -16,11 +16,11 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tf_Id.becomeFirstResponder()
-        self.login()
+//        self.login()
     }
     
     @IBAction func login(sender: UIButton) {
-//        self.login()
+        self.login()
     }
     
 }
@@ -28,8 +28,8 @@ class LoginController: UIViewController {
 extension LoginController {
     func login() {
         
-        let params = "email=maheshwari@techcetra.com&&password=qwerty123"
-//        let params = "email=\(tf_Id.text ?? "")&&password=\(tf_Password.text ?? "")"
+//        let params = "email=maheshwari@techcetra.com&&password=qwerty123"
+        let params = "email=\(tf_Id.text ?? "")&&password=\(tf_Password.text ?? "")"
         APIManager.apiInstance.getData(urlString: Constants.sharedInstance.loginUser(), params: params, requestType: .POST) {
             (success, reason, data) in
             if success {
