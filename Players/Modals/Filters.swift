@@ -70,3 +70,12 @@ class FilterObject: Codable {
         case name
     }
 }
+
+class UserFilters {
+    
+    var buildings: [Int]? = []
+    var categories: [Int]? = []
+    var skills: [Int]? = []
+    var teamStatus: Int? = -1
+    
+}

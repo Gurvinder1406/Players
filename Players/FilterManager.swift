@@ -9,7 +9,8 @@
 import UIKit
 
 protocol ApplyFilters {
-    func filterPlayersWith(skills: [Int], categories: [Int], buildings: [Int], teamStatus: Int)
+//    func filterPlayersWith(skills: [Int], categories: [Int], buildings: [Int], teamStatus: Int)
+    func filterPlayersWith(userFilters: UserFilters)
 }
 
 class FilterManager: UIViewController {
@@ -20,10 +21,11 @@ class FilterManager: UIViewController {
     var filters: Filters!
     var currentY: CGFloat = 10.0
     
-    var arrCategories: [Int] = []
-    var arrSkills: [Int] = []
-    var arrBuildings: [Int] = []
-    var int_teamStatus: Int = -1
+//    var arrCategories: [Int] = []
+//    var arrSkills: [Int] = []
+//    var arrBuildings: [Int] = []
+//    var int_teamStatus: Int = -1
+    var userFilters: UserFilters = UserFilters()
     
     var delegate: ApplyFilters?
     
@@ -39,7 +41,7 @@ class FilterManager: UIViewController {
     }
 
     @IBAction func applyFilters(_ sender: Any) {
-        delegate?.filterPlayersWith(skills: arrSkills, categories: arrCategories, buildings: arrBuildings, teamStatus: int_teamStatus)
+        delegate?.filterPlayersWith(userFilters: userFilters)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -134,16 +136,16 @@ extension FilterManager: CheckBoxDelegate {
     func checkBoxClicked(_ checkBox: CheckBox) {
         switch checkBox.checkBoxType! {
             case .Building:
-                arrBuildings = self.updateArray(inputArray: arrBuildings, valueToRemoveOrAppend: checkBox.tag, status: checkBox.checked!)
+                userFilters.buildings = self.updateArray(inputArray: userFilters.buildings ?? [], valueToRemoveOrAppend: checkBox.tag, status: checkBox.checked!)
                 break
             case .Category:
-                arrCategories = self.updateArray(inputArray: arrCategories, valueToRemoveOrAppend: checkBox.tag, status: checkBox.checked!)
+                userFilters.categories = self.updateArray(inputArray: userFilters.categories ?? [], valueToRemoveOrAppend: checkBox.tag, status: checkBox.checked!)
                 break
             case .Skill:
-                arrSkills = self.updateArray(inputArray: arrSkills, valueToRemoveOrAppend: checkBox.tag, status: checkBox.checked!)
+                userFilters.skills = self.updateArray(inputArray: userFilters.skills ?? [], valueToRemoveOrAppend: checkBox.tag, status: checkBox.checked!)
                 break
             case .TeamStatus:
-                int_teamStatus = checkBox.tag
+                userFilters.teamStatus = checkBox.tag
                 break
             default:
                 break
@@ -152,7 +154,7 @@ extension FilterManager: CheckBoxDelegate {
     }
     
     func updateApplyStatus() {
-        if arrBuildings.count == 0 && arrCategories.count == 0 && arrSkills.count == 0 && int_teamStatus < 0 {
+        if userFilters.buildings?.count == 0 && userFilters.categories?.count == 0 && userFilters.skills?.count == 0 && userFilters.teamStatus ?? -1 < 0 {
             self.btn_Apply.isEnabled = false
             self.btn_Apply.alpha = 0.5
         }

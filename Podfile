@@ -7,5 +7,6 @@ target 'Players' do
 
   # Pods for Players
   pod 'PKHUD', '~> 5.0'
+  pod 'SDWebImage'
 
 end

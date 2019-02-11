@@ -15,6 +15,7 @@ class PlayerDetailController: UIViewController {
     
     var filter: Filters!
     var arr_Players: Array<Player>! = []
+    var userFilters: UserFilters! = UserFilters()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class PlayerDetailController: UIViewController {
             let vc = segue.destination as! FilterManager
             vc.filters = filter
             vc.delegate = self
+            vc.userFilters = userFilters
         }
     }
     
@@ -117,10 +119,17 @@ extension PlayerDetailController {
 }
 
 extension PlayerDetailController: ApplyFilters {
-    func filterPlayersWith(skills: [Int], categories: [Int], buildings: [Int], teamStatus: Int) {
+    func filterPlayersWith(userFilters: UserFilters) {
         self.resetTable()
-        self.getPlayerList(skills: self.getCommaSeparatedValuesFromArray(inputArray: skills), categories: self.getCommaSeparatedValuesFromArray(inputArray: categories), buildings: self.getCommaSeparatedValuesFromArray(inputArray: buildings), teamStatus: teamStatus)
+        self.userFilters = userFilters
+        self.getPlayerList (
+            skills: self.getCommaSeparatedValuesFromArray(inputArray: userFilters.skills ?? []),
+            categories: self.getCommaSeparatedValuesFromArray(inputArray: userFilters.categories ?? []),
+            buildings: self.getCommaSeparatedValuesFromArray(inputArray: userFilters.buildings ?? []),
+            teamStatus: userFilters.teamStatus ?? -1
+        )
     }
+    
     
     func resetTable() {
         self.arr_Players = []

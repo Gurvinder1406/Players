@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PlayerDetailCell: UITableViewCell {
 
@@ -39,12 +40,13 @@ class PlayerDetailCell: UITableViewCell {
         lbl_categoryName.text = playerDetails.category ?? ""
         lbl_price.text = "Price:  ₹\(playerDetails.basePrice ?? "")"
         lbl_nameAge.text = "\(playerDetails.name ?? "") (\(playerDetails.age ?? 0) yrs)"
-        lbl_teamName.text = playerDetails.team ?? ""
+        lbl_teamName.text = playerDetails.team ?? "-"
         lbl_skills.text = self.setSkills(playerDetails: playerDetails)
         lbl_id.text = "\(playerDetails.id ?? 0)"
         lbl_points.text = "\(playerDetails.points ?? 0)"
         lbl_building.text = playerDetails.building ?? ""
-        iv_userImage.image = UIImage(named: "player")
+        print(playerDetails.picture ?? "")
+        iv_userImage.sd_setImage(with: URL(string: playerDetails.picture ?? ""), placeholderImage: UIImage(named: "player"), options: .scaleDownLargeImages, completed: nil)
         self.setTeamColor(color: CommonFunctions.sharedInstance.dictDynamicColorList[playerDetails.team ?? ""] ?? UIColor())
     }
     
