@@ -25,7 +25,6 @@ class PlayerDetailController: UIViewController {
     }
     
     @IBAction func filterClicked(sender: UIBarButtonItem) {
-        print("Clicked")
         self.performSegue(withIdentifier: "filters", sender: self)
     }
     
@@ -80,7 +79,6 @@ extension PlayerDetailController {
             (success, reason, data) in
             do {
                 let asd = try JSONSerialization.jsonObject(with: data ?? Data(), options: .allowFragments)
-                print(asd)
                 let playersData = try JSONDecoder().decode(PlayersData.self, from: data ?? Data())
                 self.arr_Players = playersData.data?.players
                 self.setColorsForTeams(playerList: self.arr_Players)

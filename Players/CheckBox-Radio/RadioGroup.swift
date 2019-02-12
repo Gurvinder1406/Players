@@ -183,7 +183,6 @@ import UIKit
     @objc func ChangeStatus(_ sender : UIButton){
         reSelectButtons()
         sender.setBackgroundImage(selectImage, for: .normal)
-        //print("clicked button")
         
         if delegate != nil{
             

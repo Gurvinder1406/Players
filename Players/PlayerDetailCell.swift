@@ -45,11 +45,20 @@ class PlayerDetailCell: UITableViewCell {
         lbl_id.text = "\(playerDetails.id ?? 0)"
         lbl_points.text = "\(playerDetails.points ?? 0)"
         lbl_building.text = playerDetails.building ?? ""
-        print(playerDetails.picture ?? "")
-        iv_userImage.sd_setImage(with: URL(string: playerDetails.picture ?? ""), placeholderImage: UIImage(named: "player"), options: .refreshCached, completed: nil)
+        self.setUserImage(playerDetails: playerDetails)
         self.setTeamColor(color: CommonFunctions.sharedInstance.dictDynamicColorList[playerDetails.team ?? ""] ?? UIColor())
     }
     
+    func setUserImage(playerDetails: Player) {
+        let temporaryImageView: UIImageView! = UIImageView(frame: iv_userImage.frame)
+        temporaryImageView.sd_setImage(with: URL(string: playerDetails.picture?.replacingOccurrences(of: " ", with: "%20") ?? ""), placeholderImage: UIImage(named: "player"), options: .refreshCached, completed: nil)
+        let temporaryImage: UIImage! = temporaryImageView.image ?? UIImage(named: "player")
+        let temporaryCgImage: CGImage! = temporaryImage.cgImage
+        let rect: CGRect = CGRect(x: 0, y: 0, width: temporaryImage.size.width, height: temporaryImage.size.width)
+        let imageRef: CGImage? = temporaryCgImage!.cropping(to: rect)
+        let finalImage: UIImage = UIImage(cgImage: imageRef!, scale: temporaryImage.scale, orientation: temporaryImage.imageOrientation)
+        iv_userImage.image = finalImage
+    }
     
     func setSkills(playerDetails: Player) -> String {
         

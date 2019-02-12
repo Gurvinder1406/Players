@@ -16,11 +16,10 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tf_Id.becomeFirstResponder()
-        self.login()
     }
     
     @IBAction func login(sender: UIButton) {
-//        self.login()
+        self.login()
     }
     
 }
@@ -28,28 +27,28 @@ class LoginController: UIViewController {
 extension LoginController {
     func login() {
         
-        let params = "email=maheshwari@techcetra.com&&password=qwerty123"
-//        let params = "email=\(tf_Id.text ?? "")&&password=\(tf_Password.text ?? "")"
+//        let params = "email=maheshwari@techcetra.com&&password=qwerty123"
+        let params = "email=\(tf_Id.text ?? "")&&password=\(tf_Password.text ?? "")"
         APIManager.apiInstance.getData(urlString: Constants.sharedInstance.loginUser(), params: params, requestType: .POST) {
             (success, reason, data) in
+           DispatchQueue.main.async {
             if success {
                 do {
                     let loginDetails = try JSONDecoder().decode(LoginDetails.self, from: data ?? Data())
                     if (loginDetails.success ?? false == true) {
                         APIManager.apiInstance.loginDetails = loginDetails
-                        DispatchQueue.main.async {
-                            self.performSegue(withIdentifier: "loginToPlayerDetails", sender: self)
-                        }
+                        self.performSegue(withIdentifier: "loginToPlayerDetails", sender: self)
                     } else {
                         let error = loginDetails.error?[0].msg ?? ""
-                        print("Login failed with reason: \(error)")
+                        CommonFunctions.sharedInstance.showAlert(msg: error, context: self)
                      }
                 } catch let err {
-                    print(err)
+                    CommonFunctions.sharedInstance.showAlert(msg: err.localizedDescription, context: self)
                 }
             } else {
-                print("Login Failed")
+                CommonFunctions.sharedInstance.showAlert(msg: "Login Failed", context: self)
             }
+        }
         }
     }
 }

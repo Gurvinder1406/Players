@@ -35,22 +35,18 @@ class APIManager: NSObject {
                 (data, urlResponse, error) in
                 
                 if error != nil {
-                    print("Error -> \(error!.localizedDescription)")
                     completion(false, "\(error!.localizedDescription)", nil)
                 } else if data == nil {
-                    print("Data not Found !")
                     completion(false, "Data not Found !", nil)
                 } else if (urlResponse as? HTTPURLResponse)?.statusCode == 200 {
                     completion(true, "", data)
                 } else {
-                    print("Invalid Response Code !")
                     completion(false, "Invalid Response Code !", nil)
                 }
             }
             getDataTask.resume()
         } else {
             completion(false, "Invalid URL", nil)
-            print("Invalid URL")
         }
     }
 
