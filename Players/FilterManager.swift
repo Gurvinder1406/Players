@@ -9,7 +9,6 @@
 import UIKit
 
 protocol ApplyFilters {
-//    func filterPlayersWith(skills: [Int], categories: [Int], buildings: [Int], teamStatus: Int)
     func filterPlayersWith(userFilters: UserFilters)
 }
 
@@ -20,28 +19,24 @@ class FilterManager: UIViewController {
     
     var filters: Filters!
     var currentY: CGFloat = 10.0
-    
-//    var arrCategories: [Int] = []
-//    var arrSkills: [Int] = []
-//    var arrBuildings: [Int] = []
-//    var int_teamStatus: Int = -1
     var userFilters: UserFilters = UserFilters()
-    
     var delegate: ApplyFilters?
+    var arrCheckBoxes: [CheckBox] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.updateApplyStatus()
+        self.applyFilters(self)
         self.createAndSetAllFilters()
         self.sv_BackgroundScroll.contentSize = CGSize(width: self.sv_BackgroundScroll.frame.size.width, height: currentY+100)
     }
     
     @IBAction func back(sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.applyFilters(self)
     }
 
     @IBAction func applyFilters(_ sender: Any) {
-        delegate?.filterPlayersWith(userFilters: userFilters)
+        delegate?.filterPlayersWith(userFilters: self.userFilters)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -63,7 +58,8 @@ extension FilterManager {
         self.sv_BackgroundScroll.addSubview(self.createLabelsForFilterTypes(title: CheckBoxType.Building.value()))
         self.filters.data?.buildings?.forEach({ (buildingFilterObj) in
             let tag = buildingFilterObj.id ?? 0
-            let checkBox = self.createCheckBoxWith(tag: tag, title: buildingFilterObj.name ?? "", checkBoxType: .Building)
+            let checkBox = self.createCheckBoxWith(tag: tag, title: buildingFilterObj.name ?? "", checkBoxType: .Building, setChecked: userFilters.buildings?.contains(tag) ?? false)
+            arrCheckBoxes.append(checkBox)
             self.sv_BackgroundScroll.addSubview(checkBox)
         })
     }
@@ -72,7 +68,8 @@ extension FilterManager {
         self.sv_BackgroundScroll.addSubview(self.createLabelsForFilterTypes(title: CheckBoxType.Category.value()))
         self.filters.data?.categories?.forEach({ (categoryFilterObj) in
             let tag = categoryFilterObj.id ?? 0
-            let checkBox = self.createCheckBoxWith(tag: tag, title: categoryFilterObj.name ?? "", checkBoxType: .Category)
+            let checkBox = self.createCheckBoxWith(tag: tag, title: categoryFilterObj.name ?? "", checkBoxType: .Category, setChecked: userFilters.categories?.contains(tag) ?? false)
+            arrCheckBoxes.append(checkBox)
             self.sv_BackgroundScroll.addSubview(checkBox)
         })
     }
@@ -81,7 +78,9 @@ extension FilterManager {
         self.sv_BackgroundScroll.addSubview(self.createLabelsForFilterTypes(title: CheckBoxType.Point.value()))
         self.filters.data?.points?.forEach({ (pointFilterObj) in
             let tag = pointFilterObj.id ?? 0
-            let checkBox = self.createCheckBoxWith(tag: tag, title: pointFilterObj.name ?? "", checkBoxType: .Point)
+            let checkBox = self.createCheckBoxWith(tag: tag, title: pointFilterObj.name ?? "", checkBoxType: .Point, setChecked: false)
+//            if userFilters?.contains(tag) ?? false { checkBox.checked = true }
+            arrCheckBoxes.append(checkBox)
             self.sv_BackgroundScroll.addSubview(checkBox)
         })
 
@@ -91,7 +90,8 @@ extension FilterManager {
         self.sv_BackgroundScroll.addSubview(self.createLabelsForFilterTypes(title: CheckBoxType.Skill.value()))
         self.filters.data?.skills?.forEach({ (skillFilterObj) in
             let tag = skillFilterObj.id ?? 0
-            let checkBox = self.createCheckBoxWith(tag: tag, title: skillFilterObj.name ?? "", checkBoxType: .Skill)
+            let checkBox = self.createCheckBoxWith(tag: tag, title: skillFilterObj.name ?? "", checkBoxType: .Skill, setChecked: userFilters.skills?.contains(tag) ?? false)
+            arrCheckBoxes.append(checkBox)
             self.sv_BackgroundScroll.addSubview(checkBox)
         })
     }
@@ -100,9 +100,23 @@ extension FilterManager {
         self.sv_BackgroundScroll.addSubview(self.createLabelsForFilterTypes(title: CheckBoxType.TeamStatus.value()))
         self.filters.data?.teamStatus?.forEach({ (teamStatusFilterObj) in
             let tag = teamStatusFilterObj.id ?? 0
-            let checkBox = self.createCheckBoxWith(tag: tag, title: teamStatusFilterObj.name ?? "", checkBoxType: .TeamStatus)
+            let checkBox = self.createCheckBoxWith(tag: tag, title: teamStatusFilterObj.name ?? "", checkBoxType: .TeamStatus, setChecked: userFilters.teamStatus == tag)
+            arrCheckBoxes.append(checkBox)
             self.sv_BackgroundScroll.addSubview(checkBox)
         })
+    }
+    
+    func resetCheckBoxStatus() {
+        arrCheckBoxes.forEach { (singleCheckBox) in
+            singleCheckBox.checked = true
+            singleCheckBox.ChangeStatus(singleCheckBox.checkBoxButton)
+        }
+    }
+    
+    @IBAction func resetFilters() {
+        self.userFilters = UserFilters()
+        self.resetCheckBoxStatus()
+        self.updateApplyStatus()
     }
     
 }
@@ -120,7 +134,7 @@ extension FilterManager: CheckBoxDelegate {
         return filterLabel
     }
     
-    func createCheckBoxWith(tag: Int, title: String, checkBoxType: CheckBoxType) -> CheckBox
+    func createCheckBoxWith(tag: Int, title: String, checkBoxType: CheckBoxType, setChecked: Bool) -> CheckBox
     {
         let checkBox = CheckBox(frame: CGRect(x: 40, y: currentY, width: 250, height: 25))
         checkBox.delegate = self
@@ -129,6 +143,7 @@ extension FilterManager: CheckBoxDelegate {
         checkBox.checkBoxTitle = title
         checkBox.fontSize = 14
         checkBox.isUserInteractionEnabled = true
+        if setChecked { checkBox.ChangeStatus(checkBox.checkBoxButton) }
         currentY = currentY + 30
         return checkBox
     }
@@ -145,7 +160,8 @@ extension FilterManager: CheckBoxDelegate {
                 userFilters.skills = self.updateArray(inputArray: userFilters.skills ?? [], valueToRemoveOrAppend: checkBox.tag, status: checkBox.checked!)
                 break
             case .TeamStatus:
-                userFilters.teamStatus = checkBox.tag
+                if checkBox.checked { userFilters.teamStatus = checkBox.tag }
+                else { userFilters.teamStatus = -1 }
                 break
             default:
                 break
@@ -176,7 +192,6 @@ extension FilterManager: CheckBoxDelegate {
             return filteredArray
         }
     }
-    
     
 }
 

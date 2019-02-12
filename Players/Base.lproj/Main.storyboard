@@ -505,6 +505,18 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPj-KH-vwu">
+                                        <rect key="frame" x="325" y="26" width="39" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="39" id="y5P-Lm-V5K"/>
+                                        </constraints>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetFilters" destination="tCT-iR-CCP" eventType="touchUpInside" id="lKS-Ml-JRo"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.47843137254901957" green="0.55686274509803924" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -514,6 +526,8 @@
                                     <constraint firstItem="xjm-Km-Che" firstAttribute="leading" secondItem="dnS-xO-4Be" secondAttribute="trailing" constant="73" id="rg7-PC-8b4"/>
                                     <constraint firstItem="dnS-xO-4Be" firstAttribute="top" secondItem="XRm-X1-FDa" secondAttribute="top" constant="12" id="tT8-hr-Ykf"/>
                                     <constraint firstItem="dnS-xO-4Be" firstAttribute="baseline" secondItem="xjm-Km-Che" secondAttribute="baseline" constant="-3" id="tca-sA-nK4"/>
+                                    <constraint firstAttribute="trailing" secondItem="iPj-KH-vwu" secondAttribute="trailing" constant="11" id="ur6-tQ-miu"/>
+                                    <constraint firstItem="iPj-KH-vwu" firstAttribute="bottom" secondItem="XRm-X1-FDa" secondAttribute="bottomMargin" id="zTZ-Ex-OiR"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFV-5Q-uHh">

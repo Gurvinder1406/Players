@@ -46,7 +46,7 @@ class PlayerDetailCell: UITableViewCell {
         lbl_points.text = "\(playerDetails.points ?? 0)"
         lbl_building.text = playerDetails.building ?? ""
         print(playerDetails.picture ?? "")
-        iv_userImage.sd_setImage(with: URL(string: playerDetails.picture ?? ""), placeholderImage: UIImage(named: "player"), options: .scaleDownLargeImages, completed: nil)
+        iv_userImage.sd_setImage(with: URL(string: playerDetails.picture ?? ""), placeholderImage: UIImage(named: "player"), options: .refreshCached, completed: nil)
         self.setTeamColor(color: CommonFunctions.sharedInstance.dictDynamicColorList[playerDetails.team ?? ""] ?? UIColor())
     }
     
